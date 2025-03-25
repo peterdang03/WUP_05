@@ -37,15 +37,41 @@ females <- filter(triUmp,gender=="F")
 
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question. Bottom line is to explain the features of the graph that are relevant to conforming or departing to what is expected by your null hypothesis !-->
 
+```{r}
+barchartGC(~infected+treatment,data=females)
+```
+
+```{r}
+barchartGC(~infected+treatment,data=females,type="percent")
+```
+
+
 ### Numerical Descriptive Results
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
+
+```{r}
+table1<- xtabs(~infected+treatment,data=triUmp)
+rowPerc(table1)
+colPerc(table1)
+```
+
+We can see that 59.3% of the people who got aids ended up taking the drug, whereas 40.7% of the people who took the placebo.
 
 ## Inferential Results
 
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
 
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+
+Since our P values for all of our data are low significant figures, we can say that we can reject the null hypothesis by saying that nothing is happening. Therefore, we conclude that the drug is not effective. 
 
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
+
+As we worked through this categorical data, we have compared two categories of if you did get aids not depending on the results based off of if you took the drug or the placebo. We are able to see from the data that the drug was not effective because the numbers were not significant in stopping the effect of aids, if the drug had a higher chance of increasing the chance of getting aids. We also examined the P value where we concluded that from the low values, we can reject the null hypothesis, which supported our conclusion that the drug was not effective. 
